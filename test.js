@@ -16,12 +16,12 @@ function addTodo(){
 		const editbtn=document.createElement('Button');
 		deletebtn.addEventListener('click',()=>{
 			todoList.removeChild(listItem);
-		}
+		});
 		editbtn.addEventListener('click',()=>{
 			const newtext;
 			newtext=prompt("Updated todo:");
 			listItem.textContent=newtext;
-		}
+		});
 		listItem.appendChild(editbtn);
 		listItem.appendChild(deletebtn);
 		todoList.appendChild(listItem);
