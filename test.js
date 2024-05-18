@@ -1,9 +1,12 @@
 const todoinput = document.getElementById("todoinput");
 const TodoBtn = document.getElementById("TodoBtn");
 const todoList = document.getElementById("todoList");
-
+const clr =document.getElementById("clr");
 TodoBtn.addEventListener("click", addTodo);
-
+clr.addEventListener("click",clearAll);
+function clearAll(){
+	
+}
 function addTodo() {
     const todotext = todoinput.value.trim();
 
@@ -40,4 +43,5 @@ function addTodo() {
     } else {
         alert('Please enter a task.');
     }
+    return;
 }
