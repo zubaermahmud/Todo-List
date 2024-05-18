@@ -3,9 +3,11 @@ const TodoBtn = document.getElementById("TodoBtn");
 const todoList = document.getElementById("todoList");
 const clr =document.getElementById("clr");
 TodoBtn.addEventListener("click", addTodo);
-clr.addEventListener("click",clearAll);
-function clearAll(){
-	
+clr.addEventListener('click', clearAll);
+function clearAll() {
+    while (todoList.firstChild) {
+        todoList.removeChild(todoList.firstChild);
+    }
 }
 function addTodo() {
     const todotext = todoinput.value.trim();
@@ -25,9 +27,9 @@ function addTodo() {
         deletebtn.addEventListener("click", () => {
             listItem.remove();
         });
-
         editbtn.addEventListener("click", () => {
-            const newtext = prompt("Updated todo:", listItem.textContent);
+			listItem.textContent='';
+            const newtext=prompt("Updated todo:", listItem.textContent);
             if (newtext !== null) {
                 listItem.textContent = newtext;
                 listItem.appendChild(editbtn);
