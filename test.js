@@ -1,36 +1,43 @@
-const todoinput =document.getElementById("todoinput");
-const TodoBtn =document.getElementById("TodoBtn");
-const todoList=document.getElementById("todoList");
+const todoinput = document.getElementById("todoinput");
+const TodoBtn = document.getElementById("TodoBtn");
+const todoList = document.getElementById("todoList");
 
-Todobtn.addEventListener("click",addTodo);
+TodoBtn.addEventListener("click", addTodo);
 
-function addTodo(){
-	const todotext=todoinput.value.trim();
-	
-	if(todotext!="")
-	{
-		const listItem= document.createElement('li');
-		listItem.textContent=todotext;
-		
-		const deletebtn=document.createElement('Button');
-		const editbtn=document.createElement('Button');
-		deletebtn.addEventListener('click',()=>{
-			todoList.removeChild(listItem);
-		});
-		editbtn.addEventListener('click',()=>{
-			const newtext;
-			newtext=prompt("Updated todo:");
-			listItem.textContent=newtext;
-		});
-		listItem.appendChild(editbtn);
-		listItem.appendChild(deletebtn);
-		todoList.appendChild(listItem);
-		
-		todoinput.value="";
-	}
-	else
-	{
-		alert('Please enter a task.');
-		return;
-	}
+function addTodo() {
+    const todotext = todoinput.value.trim();
+
+    if (todotext !== "") {
+        const listItem = document.createElement("li");
+        listItem.textContent = todotext;
+
+        const deletebtn = document.createElement("button");
+        deletebtn.textContent = "Delete";
+        deletebtn.classList.add("link-button");
+        
+        const editbtn = document.createElement("button");
+        editbtn.textContent = "Edit";
+        editbtn.classList.add("link-button");
+
+        deletebtn.addEventListener("click", () => {
+            listItem.remove();
+        });
+
+        editbtn.addEventListener("click", () => {
+            const newtext = prompt("Updated todo:", listItem.textContent);
+            if (newtext !== null) {
+                listItem.textContent = newtext;
+                listItem.appendChild(editbtn);
+                listItem.appendChild(deletebtn);
+            }
+        });
+
+        listItem.appendChild(editbtn);
+        listItem.appendChild(deletebtn);
+        todoList.appendChild(listItem);
+
+        todoinput.value = "";
+    } else {
+        alert('Please enter a task.');
+    }
 }
